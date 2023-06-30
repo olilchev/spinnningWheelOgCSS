@@ -9,7 +9,7 @@ let isSpinning = false;
 let spinCount = 0;
 const maxSpinCount = 4;
 let freeSpinCount = 0;
-let hasDisplayedMessage = false; // Flag to track if the additional message has been displayed
+let hasDisplayedMessage = false; 
 
 window.onload = function () {
   btn.classList.add("pulsating-text");
@@ -28,9 +28,8 @@ btn.onclick = function () {
     } else {
       resultDegree = randomDegree % 360;
     }
-    console.log(resultDegree);
 
-    // Determine the active div based on the rotation angle
+  
     let activeDiv;
     if (resultDegree <= 22.5 || resultDegree >= 337.5) {
       activeDiv = document.querySelector(".one");
@@ -50,12 +49,9 @@ btn.onclick = function () {
       activeDiv = document.querySelector(".two");
     }
 
-    console.log("Active div:", activeDiv.textContent);
-
     randomDegree += rotationAngle;
 
     const transitionComplete = () => {
-      console.log("Transition completed");
 
       if (activeDiv.className.includes("eight")) {
         text.innerHTML = `Честито! Печелиш 3 безплатни завъртания!`;
@@ -84,20 +80,3 @@ btn.onclick = function () {
   }
 };
 
-// const freeSpins = () => {
-//   if (freeSpinCount < maxSpinCount) {
-//     freeSpinCount++;
-//     setTimeout(() => {
-//       btn.click();
-//     }, 1000); // Delay the button click to allow the transition to complete
-//   } else if (freeSpinCount === maxSpinCount && !hasDisplayedMessage) {
-//     hasDisplayedMessage = true;
-//     setTimeout(() => {
-//       text.innerHTML = "Честито...!";
-//       btn.disabled = false;
-//       btn.classList.add("pulsating-text");
-//     }, 1000);
-//   }
-// };
-
-// freeSpins();
